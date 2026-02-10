@@ -42,7 +42,7 @@ export function FeaturedWork() {
             <h2 className="text-3xl font-semibold tracking-tight">
               Featured work
             </h2>
-            <p className="mt-4 text-muted">
+            <p className="mt-4 max-w-2xl text-muted">
               A selection of recent builds—designed to be fast, accessible, and
               outcome-driven.
             </p>
@@ -75,22 +75,30 @@ function WorkCard({ item }: { item: WorkItem }) {
   return (
     <Link
       href={`/work/${item.slug}`}
-      className="group block rounded-lg border border-white/10 bg-white/5 p-6 transition hover:border-white/20"
+      className="group block rounded-lg border border-white/10 bg-white/5 p-6 transition
+             hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/7 hover:shadow-[0_0_0_1px_rgba(34,211,238,0.15),0_0_40px_rgba(34,211,238,0.08)]
+             focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]
+             focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
     >
       <div className="flex items-start justify-between gap-4">
-        <h3 className="text-lg font-medium">{item.title}</h3>
+        <h3 className="text-lg font-medium transition group-hover:text-white">
+          {item.title}
+        </h3>
         <span className="text-sm text-[var(--color-accent)] opacity-0 transition group-hover:opacity-100">
           →
         </span>
       </div>
 
-      <p className="mt-3 text-sm text-muted">{item.description}</p>
+      <p className="mt-3 text-sm text-muted leading-relaxed">
+        {item.description}
+      </p>
 
       <div className="mt-5 flex flex-wrap gap-2">
         {item.tags.map((tag) => (
           <span
             key={tag}
-            className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted"
+            className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted transition
+             group-hover:border-white/15 group-hover:text-text"
           >
             {tag}
           </span>

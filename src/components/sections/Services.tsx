@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/Container";
+import { FadeUp, Stagger, Item } from "@/components/ui/Motion";
 
 type Service = {
   title: string;
@@ -37,25 +38,27 @@ export function Services() {
   return (
     <section className="border-t border-white/10">
       <Container className="py-24">
-        <header className="max-w-2xl">
-          <h2 className="text-3xl font-semibold tracking-tight">
-            What we do
-          </h2>
-          <p className="mt-4 text-muted">
-            Focused services for teams who care about performance, clarity,
-            and execution.
-          </p>
-        </header>
-
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <FadeUp>
+          <header className="max-w-2xl">
+            <h2 className="text-3xl font-semibold tracking-tight">
+              What we do
+            </h2>
+            <p className="mt-4 max-w-2xl text-muted">
+              Focused services for teams who care about performance, clarity,
+              and execution.
+            </p>
+          </header>
+        </FadeUp>
+        <Stagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service) => (
-            <ServiceCard
-              key={service.title}
-              title={service.title}
-              description={service.description}
-            />
+            <Item key={service.title}>
+              <ServiceCard
+                title={service.title}
+                description={service.description}
+              />
+            </Item>
           ))}
-        </div>
+        </Stagger>
       </Container>
     </section>
   );
@@ -69,9 +72,9 @@ function ServiceCard({
   description: string;
 }) {
   return (
-    <div className="rounded-lg border border-white/10 bg-white/5 p-6 transition hover:border-white/20">
+    <div className="rounded-lg border border-white/10 bg-white/5 p-7 transition hover:border-white/20">
       <h3 className="text-lg font-medium">{title}</h3>
-      <p className="mt-3 text-sm text-muted">{description}</p>
+      <p className="mt-3 text-sm text-muted leading-relaxed">{description}</p>
     </div>
   );
 }

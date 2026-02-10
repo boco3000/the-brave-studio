@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Brave Studio
 
-## Getting Started
+**Modern service business website**
+Built as a portfolio project to demonstrate real-world front-end architecture,
+design systems, and performance-minded UI development.
 
-First, run the development server:
+> *Fortune favors The Brave.*
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The Brave Studio is a fictional creative studio used as a case study for building
+a sleek, modern marketing site. The goal was to simulate the type of website
+freelance clients often need: clear positioning, strong hierarchy, and a
+conversion-focused structure.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project prioritizes:
+- clarity over visual noise
+- reusable components
+- accessibility and performance
+- clean, maintainable code
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Next.js (App Router)**
+- **React + TypeScript**
+- **Tailwind CSS v4**
+- **Framer Motion** (motion with reduced-motion support)
+- **CSS Variables** for design tokens
+- Deployed on **Vercel**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Key Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Design system with tokens**  
+  Centralized color, spacing, and radius variables for consistency and scalability.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Reusable UI primitives**  
+  Buttons, containers, and motion helpers built for reuse across sections.
+
+- **Structured marketing layout**  
+  Hero → Services → Featured Work → Process, mirroring real client sites.
+
+- **Accessible interactions**
+  - Keyboard-friendly navigation
+  - Focus-visible states
+  - Motion respects `prefers-reduced-motion`
+
+- **Performance-minded UI**
+  - Minimal animations
+  - Clean layout hierarchy
+  - No unnecessary client-side state
+
+---
+
+## Pages & Structure
+
+- `/` — Marketing homepage
+- `/work` — Work index (stub)
+- `/work/[slug]` — Case study route (extensible)
+
+The project is structured to scale into a full case-study system using MDX or a CMS.
+
+---
+
+## Why This Project Exists
+
+This project was built to demonstrate:
+- how I structure real client websites
+- how I think about design systems and reuse
+- how I balance polish with restraint
+- how I write readable, refactorable code
+
+It reflects how I approach freelance and contract work.
+
+---
+
+## Live Demo
+
+🔗 *(Add Vercel link here)*
+
+---
+
+## Author
+
+Bo Cochran  
+Front-End Developer  

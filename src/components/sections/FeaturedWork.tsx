@@ -2,39 +2,15 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Card, CardTitle, CardDescription } from "@/components/ui/Card";
+import { getWorkList } from "@/lib/work";
+import type { WorkItem } from "@/lib/work";
 
-type WorkItem = {
-  title: string;
-  description: string;
-  tags: string[];
-  slug: string;
-};
-
-const FEATURED_WORK: WorkItem[] = [
-  {
-    title: "Astra — Product Marketing Site",
-    description:
-      "A sleek, conversion-first site for a SaaS launch with accessible forms and performance polish.",
-    tags: ["Next.js", "Design System", "SEO"],
-    slug: "astra-product-site",
-  },
-  {
-    title: "Kite Labs — Studio Rebrand",
-    description:
-      "A modern studio presence with reusable case study templates, motion, and cohesive typography.",
-    tags: ["Brand", "UI", "Motion"],
-    slug: "kite-labs-rebrand",
-  },
-  {
-    title: "Neon Freight — Startup Launch",
-    description:
-      "Launch-ready marketing site built fast with a clean content model and strong lead capture UX.",
-    tags: ["Landing", "Accessibility", "Performance"],
-    slug: "neon-freight-launch",
-  },
-];
 
 export function FeaturedWork() {
+  const featured = getWorkList()
+    .filter((item) => item.featured)
+    .slice(0, 3);
+
   return (
     <section className="border-t border-white/10">
       <Container className="py-24">
@@ -57,7 +33,7 @@ export function FeaturedWork() {
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {FEATURED_WORK.map((item) => (
+          {featured.map((item) => (
             <WorkCard key={item.slug} item={item} />
           ))}
         </div>

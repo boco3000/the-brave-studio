@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { FadeUp, Stagger, Item } from "@/components/ui/Motion";
+import { Card, CardTitle, CardDescription } from "@/components/ui/Card";
 
 type Service = {
   title: string;
@@ -72,9 +73,9 @@ function ServiceCard({
   description: string;
 }) {
   return (
-    <div className="rounded-lg border border-white/10 bg-white/5 p-7 transition hover:border-white/20">
-      <h3 className="text-lg font-medium">{title}</h3>
-      <p className="mt-3 text-sm text-muted leading-relaxed">{description}</p>
-    </div>
+    <Card className="p-7" interactive>
+      <CardTitle>{title}</CardTitle>
+      <CardDescription>{description}</CardDescription>
+    </Card>
   );
 }

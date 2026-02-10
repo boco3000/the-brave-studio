@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { FadeUp, Stagger, Item } from "@/components/ui/Motion";
+import { Card, CardTitle, CardDescription } from "@/components/ui/Card";
 
 type Step = {
   title: string;
@@ -71,13 +72,15 @@ function ProcessStep({
   description: string;
 }) {
   return (
-  <div className="relative rounded-lg border border-white/10 bg-white/5 p-7">
+    <Card className="relative p-7">
       <span className="absolute -top-3 left-6 rounded-full bg-[var(--color-bg)] px-3 py-1 text-xs font-medium text-[var(--color-accent)]">
         {index}
       </span>
 
-      <h3 className="mt-4 text-lg font-medium">{title}</h3>
-      <p className="mt-3 text-sm text-muted leading-relaxed">{description}</p>
-    </div>
+      <div className="mt-4">
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
+      </div>
+    </Card>
   );
 }

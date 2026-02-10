@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { Card, CardTitle, CardDescription } from "@/components/ui/Card";
 
 type WorkItem = {
   title: string;
@@ -75,35 +76,33 @@ function WorkCard({ item }: { item: WorkItem }) {
   return (
     <Link
       href={`/work/${item.slug}`}
-      className="group block rounded-lg border border-white/10 bg-white/5 p-6 transition
-             hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/7 hover:shadow-[0_0_0_1px_rgba(34,211,238,0.15),0_0_40px_rgba(34,211,238,0.08)]
-             focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]
-             focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
+      className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] rounded-lg"
     >
-      <div className="flex items-start justify-between gap-4">
-        <h3 className="text-lg font-medium transition group-hover:text-white">
-          {item.title}
-        </h3>
-        <span className="text-sm text-[var(--color-accent)] opacity-0 transition group-hover:opacity-100">
-          →
-        </span>
-      </div>
-
-      <p className="mt-3 text-sm text-muted leading-relaxed">
-        {item.description}
-      </p>
-
-      <div className="mt-5 flex flex-wrap gap-2">
-        {item.tags.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted transition
-             group-hover:border-white/15 group-hover:text-text"
-          >
-            {tag}
+      <Card className="p-7 hover:-translate-y-0.5" interactive>
+        <div className="flex items-start justify-between gap-4">
+          <CardTitle className="transition group-hover:text-white">
+            {item.title}
+          </CardTitle>
+          <span className="text-sm text-[var(--color-accent)] opacity-0 transition group-hover:opacity-100">
+            →
           </span>
-        ))}
-      </div>
+        </div>
+
+        <CardDescription className="leading-relaxed">
+          {item.description}
+        </CardDescription>
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          {item.tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted transition group-hover:border-white/15 group-hover:text-text"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </Card>
     </Link>
   );
 }

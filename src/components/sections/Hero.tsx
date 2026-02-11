@@ -20,7 +20,12 @@ export function Hero() {
               style={{ backgroundColor: "var(--color-accent)" }}
             />
             <span className="text-text">The Brave Studio</span>
-            <span className="text-muted">• Sleek web experiences</span>
+
+            <span aria-hidden="true" className="text-muted px-1 leading-none">
+              •
+            </span>
+
+            <span className="text-muted">Sleek web experiences</span>
           </p>
         </FadeUp>
 

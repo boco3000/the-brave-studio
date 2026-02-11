@@ -75,3 +75,16 @@ export function getWorkSourceBySlug(slug: string): {
     content,
   };
 }
+
+export function getWorkNav(slug: string): { prev: WorkItem | null; next: WorkItem | null } {
+  const list = getWorkList();
+  const index = list.findIndex((i) => i.slug === slug);
+
+  if (index === -1) return { prev: null, next: null };
+
+  // list is newest-first; "prev" should go to newer, "next" to older (common blog pattern)
+  const prev = index > 0 ? list[index - 1] : null;
+  const next = index < list.length - 1 ? list[index + 1] : null;
+
+  return { prev, next };
+}

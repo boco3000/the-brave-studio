@@ -1,8 +1,6 @@
 # The Brave Studio
 
-**Modern service business website**
-Built as a portfolio project to demonstrate real-world front-end architecture,
-design systems, and performance-minded UI development.
+**Sleek, modern service-business website built with Next.js App Router, TypeScript, and a scalable MDX content system.**
 
 > *Fortune favors The Brave.*
 
@@ -10,16 +8,17 @@ design systems, and performance-minded UI development.
 
 ## Overview
 
-The Brave Studio is a fictional creative studio used as a case study for building
-a sleek, modern marketing site. The goal was to simulate the type of website
-freelance clients often need: clear positioning, strong hierarchy, and a
-conversion-focused structure.
+**The Brave Studio** is a portfolio project designed to simulate a real-world creative studio website — the type of marketing presence freelance clients commonly need.
 
-This project prioritizes:
-- clarity over visual noise
-- reusable components
-- accessibility and performance
-- clean, maintainable code
+The goal was to build something that feels **intentional, performant, and production-ready**, not just visually impressive. The project focuses on clean architecture, reusable components, accessibility, and a content system that scales.
+
+Rather than hardcoding pages, case studies are powered by **typed MDX content**, allowing the UI to remain consistent while content evolves independently.
+
+---
+
+## Live Demo
+
+🔗 *Add your Vercel deployment link here*
 
 ---
 
@@ -28,64 +27,75 @@ This project prioritizes:
 - **Next.js (App Router)**
 - **React + TypeScript**
 - **Tailwind CSS v4**
-- **Framer Motion** (motion with reduced-motion support)
+- **Framer Motion** (with reduced-motion support)
+- **MDX** for case studies
 - **CSS Variables** for design tokens
-- Deployed on **Vercel**
 
 ---
 
 ## Key Features
 
-- **Design system with tokens**  
-  Centralized color, spacing, and radius variables for consistency and scalability.
+### Design System Foundations
+- Token-based styling using CSS variables
+- Reusable UI primitives (`Button`, `Card`, `Container`, `Motion`)
+- Consistent spacing, typography rhythm, and layout structure
 
-- **Reusable UI primitives**  
-  Buttons, containers, and motion helpers built for reuse across sections.
+### MDX Case Study Architecture
+- Content lives outside the UI layer
+- Typed frontmatter (title, description, tags, role, stack)
+- Static generation with scalable routing
+- Featured work derived directly from content
 
-- **Structured marketing layout**  
-  Hero → Services → Featured Work → Process, mirroring real client sites.
+### Accessible Interaction Patterns
+- Keyboard-friendly navigation
+- `focus-visible` states
+- Motion respects `prefers-reduced-motion`
 
-- **Accessible interactions**
-  - Keyboard-friendly navigation
-  - Focus-visible states
-  - Motion respects `prefers-reduced-motion`
-
-- **Performance-minded UI**
-  - Minimal animations
-  - Clean layout hierarchy
-  - No unnecessary client-side state
+### Performance-Minded UI
+- Minimal client-side state
+- Server-rendered pages
+- Intentional animation usage
 
 ---
 
 ## Pages & Structure
 
-- `/` — Marketing homepage
-- `/work` — Work index (stub)
-- `/work/[slug]` — Case study route (extensible)
+- `/` — Marketing homepage  
+- `/work` — Case study index (content-driven)  
+- `/work/[slug]` — Individual MDX case studies
 
-The project is structured to scale into a full case-study system using MDX or a CMS.
+The structure mirrors how real freelance or agency projects scale over time.
+
+---
+
+## Architecture Highlights
+
+- **Content-driven Featured Work**  
+  Homepage projects are sourced directly from MDX frontmatter (`featured: true`) — no duplicated data.
+
+- **Reusable Card System**  
+  Services, Work, and Process sections share a unified component for visual consistency.
+
+- **Structured Case Study Layout**  
+  Two-column header, meta panel, navigation between projects, and editorial-style content flow.
 
 ---
 
 ## Why This Project Exists
 
-This project was built to demonstrate:
-- how I structure real client websites
-- how I think about design systems and reuse
-- how I balance polish with restraint
-- how I write readable, refactorable code
+This project demonstrates how I approach building real client websites:
 
-It reflects how I approach freelance and contract work.
+- Clear hierarchy over visual noise
+- Systems over one-off components
+- Accessibility as a baseline, not an afterthought
+- Maintainable code that scales as content grows
 
----
-
-## Live Demo
-
-🔗 *(Add Vercel link here)*
+It reflects how I design and build freelance projects from the ground up.
 
 ---
 
-## Author
+## Getting Started
 
-Bo Cochran  
-Front-End Developer  
+```bash
+npm install
+npm run dev

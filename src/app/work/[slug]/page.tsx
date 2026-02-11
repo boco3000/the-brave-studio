@@ -4,6 +4,10 @@ import { mdxComponents } from "@/components/mdx/MDXComponents";
 import { compileMDX } from "next-mdx-remote/rsc";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import fs from "node:fs";
+import path from "node:path";
+
 import {
   getWorkNav,
   getWorkSlugs,
@@ -15,17 +19,27 @@ export async function generateStaticParams() {
   return getWorkSlugs().map((slug) => ({ slug }));
 }
 
+function workFileExists(slug: string) {
+  const filePath = path.join(process.cwd(), "content", "work", `${slug}.mdx`);
+  return fs.existsSync(filePath);
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+
+  // Avoid crashing metadata generation on invalid slugs
+  if (!workFileExists(slug)) return {};
+
   const { fm } = getWorkSourceBySlug(slug);
 
   return {
-    title: `${fm.title} — The Brave Studio`,
+    title: fm.title, // layout template adds “— The Brave Studio”
     description: fm.description,
+    alternates: { canonical: `/work/${slug}` },
   };
 }
 
@@ -46,6 +60,10 @@ export default async function WorkDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+
+  // Invalid slug → proper 404 instead of server crash
+  if (!workFileExists(slug)) notFound();
+
   const { fm, content } = getWorkSourceBySlug(slug);
 
   const { content: mdx } = await compileMDX({
@@ -54,6 +72,7 @@ export default async function WorkDetailPage({
   });
 
   const prettyDate = formatDate(fm.date);
+
   const { prev, next } = getWorkNav(slug);
   const workList = getWorkList();
   const currentIndex = workList.findIndex((w) => w.slug === slug);
@@ -61,23 +80,25 @@ export default async function WorkDetailPage({
 
   return (
     <Container className="py-24">
-      {/* Header */}
+      {/* Back + progress */}
       <div className="mb-10 flex items-center justify-between gap-4">
         <Link
           href="/work"
           className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-text
-               focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]
-               focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]
-               rounded-md px-2 py-1 -ml-2"
+                     focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]
+                     focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]
+                     rounded-md px-2 py-1 -ml-2"
         >
           <span className="text-[var(--color-accent)]">←</span>
           Back to Work
         </Link>
 
         <div className="text-xs text-muted">
-          {currentIndex + 1} of {total}
+          {Math.max(currentIndex, 0) + 1} of {total}
         </div>
       </div>
+
+      {/* Header grid */}
       <div className="grid gap-10 lg:grid-cols-[1fr_360px] lg:items-start">
         <div>
           <p className="text-sm text-muted">Case study</p>
@@ -133,30 +154,24 @@ export default async function WorkDetailPage({
         </Card>
       </div>
 
-      {/* Content */}
+      {/* Accent divider + content */}
       <div className="mt-16 h-px w-24 bg-[var(--color-accent)] opacity-60" />
-
       <article className="mt-10 max-w-3xl">{mdx}</article>
+
+      {/* Prev / Next */}
       {prev || next ? (
         <div className="mt-16 border-t border-white/10 pt-10">
-          <div
-            className={[
-              "grid gap-6",
-              prev && next ? "sm:grid-cols-2" : "sm:grid-cols-2",
-            ].join(" ")}
-          >
+          <div className="grid gap-6 sm:grid-cols-2">
             {prev ? (
               <Link
                 href={`/work/${prev.slug}`}
                 className="rounded-lg border border-white/10 bg-white/5 p-6 transition hover:border-white/20 hover:bg-white/10
-                   focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]
-                   focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
+                           focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]
+                           focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
               >
                 <div className="text-xs text-muted">Previous</div>
                 <div className="mt-2 font-medium">{prev.title}</div>
-                <div className="mt-2 text-sm text-muted">
-                  {prev.description}
-                </div>
+                <div className="mt-2 text-sm text-muted">{prev.description}</div>
               </Link>
             ) : (
               <div className="hidden sm:block" />
@@ -166,14 +181,12 @@ export default async function WorkDetailPage({
               <Link
                 href={`/work/${next.slug}`}
                 className="rounded-lg border border-white/10 bg-white/5 p-6 transition hover:border-white/20 hover:bg-white/10
-                   focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]
-                   focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] sm:text-right"
+                           focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]
+                           focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] sm:text-right"
               >
                 <div className="text-xs text-muted">Next</div>
                 <div className="mt-2 font-medium">{next.title}</div>
-                <div className="mt-2 text-sm text-muted">
-                  {next.description}
-                </div>
+                <div className="mt-2 text-sm text-muted">{next.description}</div>
               </Link>
             ) : (
               <div className="hidden sm:block" />

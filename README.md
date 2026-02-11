@@ -1,3 +1,36 @@
+<p align="center">
+  <img src="./docs/banner.png" alt="The Brave Studio banner" width="100%" />
+</p>
+
+<h1 align="center">The Brave Studio</h1>
+
+<p align="center">
+  <strong>Modern service-business website</strong> — sleek UI, accessible interactions, and MDX-powered case studies.
+  <br />
+  <em>Fortune favors The Brave.</em>
+</p>
+
+<p align="center">
+  <a href="PASTE_VERCEL_LINK_HERE"><strong>Live Demo</strong></a>
+  ·
+  <a href="#pages--structure"><strong>Pages</strong></a>
+  ·
+  <a href="#tech-stack"><strong>Tech Stack</strong></a>
+  ·
+  <a href="#getting-started"><strong>Run Locally</strong></a>
+</p>
+
+<p align="center">
+  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-App%20Router-000000?logo=nextdotjs&logoColor=white" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Strict-3178C6?logo=typescript&logoColor=white" />
+  <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind-v4-38BDF8?logo=tailwindcss&logoColor=white" />
+  <img alt="MDX" src="https://img.shields.io/badge/Content-MDX-000000?logo=mdx&logoColor=white" />
+  <img alt="Framer Motion" src="https://img.shields.io/badge/Motion-Framer-0055FF?logo=framer&logoColor=white" />
+  <img alt="Deployed" src="https://img.shields.io/badge/Deployed-Vercel-000000?logo=vercel&logoColor=white" />
+</p>
+
+<hr />
+
 # The Brave Studio
 
 **Sleek, modern service-business website built with Next.js App Router, TypeScript, and a scalable MDX content system.**

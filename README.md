@@ -151,6 +151,7 @@ It reflects how I design and build freelance projects from the ground up.
 ```bash
 npm install
 npm run dev
+```
 
 Open: http://localhost:3000
 

@@ -1,0 +1,48 @@
+---
+title: The Brave Studio (Demo)
+description: A sleek, content-driven studio website built with Next.js App Router, MDX case studies, and accessibility-first UI.
+date: 2026-02-11
+tags:
+  - Next.js
+  - MDX
+  - Tailwind
+  - SEO
+role: Front-End Developer
+stack:
+  - Next.js (App Router)
+  - React
+  - TypeScript
+  - Tailwind CSS v4
+  - MDX
+featured: true
+---
+
+## Goal
+
+Build a modern studio website that demonstrates real client-ready patterns:
+- content-driven case studies (MDX)
+- reusable UI primitives
+- accessibility baseline (focus states, keyboard nav)
+- production SEO (metadata, sitemap, robots, JSON-LD)
+
+## What I built
+
+- **Hero + service sections** with a sleek, high-contrast aesthetic
+- **Work system** driven by MDX frontmatter (featured work on home, full list on /work)
+- **Case study template** with navigation (Prev/Next) and progress indicator
+- **Work filters** using URL query params (`?tag=` and `?q=`) for shareable browsing
+- **Mobile nav drawer** with Escape close, focus management, and overlay
+
+## Why this architecture
+
+A studio site evolves. Instead of hardcoding content into components, the UI stays stable while case studies scale independently.
+
+## Highlights
+
+- Server components load content, client components handle interactivity
+- SEO-ready routing with canonical URLs, Open Graph, and JSON-LD
+- Clean design tokens with an electric-cyan accent
+
+## Live Demo
+
+- https://the-brave-studio.vercel.app/

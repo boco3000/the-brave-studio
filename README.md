@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="PASTE_VERCEL_LINK_HERE"><strong>Live Demo</strong></a>
+  <a href="https://the-brave-studio.vercel.app/"><strong>Live Demo</strong></a>
   ·
   <a href="#pages--structure"><strong>Pages</strong></a>
   ·
@@ -51,7 +51,7 @@ Rather than hardcoding pages, case studies are powered by **typed MDX content**,
 
 ## Live Demo
 
-🔗 *Add your Vercel deployment link here*
+🔗 https://the-brave-studio.vercel.app/
 
 ---
 
@@ -63,6 +63,7 @@ Rather than hardcoding pages, case studies are powered by **typed MDX content**,
 - **Framer Motion** (with reduced-motion support)
 - **MDX** for case studies
 - **CSS Variables** for design tokens
+- **Vercel** deployment
 
 ---
 
@@ -81,6 +82,7 @@ Rather than hardcoding pages, case studies are powered by **typed MDX content**,
 
 ### Accessible Interaction Patterns
 - Keyboard-friendly navigation
+- Mobile nav drawer with focus management
 - `focus-visible` states
 - Motion respects `prefers-reduced-motion`
 
@@ -89,13 +91,27 @@ Rather than hardcoding pages, case studies are powered by **typed MDX content**,
 - Server-rendered pages
 - Intentional animation usage
 
+### Contact Experience
+- Accessible contact page
+- Mailto-based submission (no backend required)
+- Realistic freelance workflow simulation
+
+### SEO & Metadata
+- Canonical URLs
+- JSON-LD structured data
+- Open Graph image
+- Sitemap + robots configuration
+
 ---
 
 ## Pages & Structure
 
 - `/` — Marketing homepage  
 - `/work` — Case study index (content-driven)  
-- `/work/[slug]` — Individual MDX case studies
+- `/work/[slug]` — Individual MDX case studies  
+- `/services` — Service overview page  
+- `/about` — About the builder  
+- `/contact` — Mailto-based contact form  
 
 The structure mirrors how real freelance or agency projects scale over time.
 
@@ -111,6 +127,9 @@ The structure mirrors how real freelance or agency projects scale over time.
 
 - **Structured Case Study Layout**  
   Two-column header, meta panel, navigation between projects, and editorial-style content flow.
+
+- **Server + Client Component Separation**  
+  Metadata and routing remain server-side while interactive UI lives in client components.
 
 ---
 
@@ -132,3 +151,20 @@ It reflects how I design and build freelance projects from the ground up.
 ```bash
 npm install
 npm run dev
+
+Open: http://localhost:3000
+
+## Deployment
+
+git push → automatic deploy
+
+## Portfolio Notes
+
+This is a portfolio demo project built to showcase architecture, UI systems, and modern front-end workflows.
+
+The contact form uses a mailto fallback and does not include a backend service.
+
+## Author
+
+Bo Cochran
+Front-End Developer focused on sleek, modern web experiences.

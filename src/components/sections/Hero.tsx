@@ -38,7 +38,7 @@ export function Hero() {
 
         <FadeUp delay={0.12}>
           <p className="mt-6 max-w-2xl text-lg text-muted">
-            We design and build modern marketing sites and product experiences —
+            I design and build modern marketing sites and product experiences —
             fast, accessible, and engineered to convert.
           </p>
         </FadeUp>

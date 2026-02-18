@@ -157,6 +157,8 @@ Open: http://localhost:3000
 
 ## Deployment
 
+Hosted on Vercel:
+
 git push → automatic deploy
 
 ## Portfolio Notes
